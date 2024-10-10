@@ -1,8 +1,13 @@
 class Deck 
-  attr_reader :cards
+  attr_accessor :cards
+                :index
 
   def initialize(cards)
-    @cards = [card1, card2, card3]
-    
+    @cards = cards
+
+  end
+
+  def rank_of_card_at(cards)
+    @cards = index.rank
   end
 end
