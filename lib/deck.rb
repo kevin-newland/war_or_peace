@@ -27,6 +27,6 @@ class Deck
   end
 
   def add_card(card)
-    @cards << card
+    @cards << card #adds card to array of cards
   end 
 end
