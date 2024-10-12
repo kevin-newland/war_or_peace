@@ -1,28 +1,29 @@
 class Deck 
-  attr_accessor :cards
-                :rank
-                :value
+  attr_accessor :cards    # allows both reading and modifying to be done to the array of cards from outside the class
+                :rank     #attribute 
+                :value    #attribute
 
-  def initialize(cards)
-    @cards = cards
+  def initialize(cards) # takes an array of cards in the form of an argumantand assigns it to the @cards instance variable 
+    @cards = cards  
   end
 
-  def rank_of_card_at(index)
-    @cards[index].rank
+  def rank_of_card_at(index)# accesses the card at the given index in @cards and returns the rank of that card
+    @cards[index].rank #accessing a array of cards and retrieving the rank by using a index
   end
 
-  def high_ranking_cards
-    @cards.select { |card| card.rank >= 11} #change? check docs
-  end
+  def high_ranking_cards #returns an array with only high ranking cards
+    @cards.select { |card| card.rank >= 11} #filters through @cards array returnig a new array containing only cards whos rank is 11 or greater
+  end  
 
-  def percent_high_ranking
+  def percent_high_ranking #this method calculates and returns the percentage of high-ranking cards in the deck, rounded to two decimal places.
+
    high_ranking_cards = @cards.select { |card| card.rank >= 11}
-   expected_percentage = (high_ranking_cards.count.to_f/ @cards.count.to_f) * 100 
+   expected_percentage = (high_ranking_cards.count.to_f/ @cards.count.to_f) * 100 # calculates
    expected_percentage.round(2)
   end 
-#equation?
+
   def remove_card
-    @cards.shift
+    @cards.shift #.shift takes the first element out of the array and returns it 
   end
 
   def add_card(card)
