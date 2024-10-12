@@ -11,11 +11,11 @@ RSpec.describe Player do
     card3 = Card.new(:heart, 'Ace', 14)  
     deck = Deck.new([card1, card2, card3])
 
-    player = Player.new('Clarisa', deck)
+    player = Player.new('Clarisa', deck)#Execution creates player OBJECT with name and deck(reminder that deck was already created)
     
     
-    expect(player.name).to eq('Clarisa')
-    expect(player.deck).to eq(deck)
+    expect(player.name).to eq('Clarisa')#assertion checks to see if the players name is equal to 'clarisa'
+    expect(player.deck).to eq(deck)#assertion checks to see if the players deck is equal to the deck that was given to the player upon creation
   end 
 
   it "can determine if they have lost" do
@@ -25,11 +25,11 @@ RSpec.describe Player do
     deck = Deck.new([card1, card2, card3])
     
     player = Player.new('Clarisa', deck)
+    player.deck.remove_card#execution removes card from the deck
     player.deck.remove_card
     player.deck.remove_card
-    player.deck.remove_card
-    expect(player.deck.cards).to eq([])
-    expect(player.has_lost?).to eq(true)
+    expect(player.deck.cards).to eq([])#assertion checks to see if all the cards in the deck have been removed 
+    expect(player.has_lost?).to eq(true)# assertion checks to see if the player has lost
   end
   #binding.pry
 end 
