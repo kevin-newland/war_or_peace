@@ -1,7 +1,7 @@
 class Deck 
-  attr_accessor :cards    # allows both reading and modifying to be done to the array of cards from outside the class
-                :rank     #attribute 
-                :value    #attribute
+  attr_reader :cards,    # allows both reading and modifying to be done to the array of cards from outside the class
+              :rank,    #attribute 
+              :value   #attribute
 
   def initialize(cards) # takes an array of cards in the form of an argumantand assigns it to the @cards instance variable 
     @cards = cards  
