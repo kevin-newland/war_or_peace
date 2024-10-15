@@ -71,7 +71,7 @@ RSpec.describe Deck do
 
       deck.add_card(card4)#execution adds card4 to the deck 
       expect(deck.cards).to eq([card1, card2, card3, card4])#assertion checks to see if the card was added
-      binding.pry
+     
     end 
 
   #end
