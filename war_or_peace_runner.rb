@@ -1,7 +1,7 @@
 require './lib/card'
 require './lib/deck'
 require './lib/player'
-# require './lib/turn'
+require './lib/turn'
 
 suits = [:heart, :diamond, :spade, :club]
 
@@ -23,11 +23,17 @@ suits.each do |suit|
   all_cards << Card.new(:suit, "Ace", 14)
 end
 
-
-# deck1 = Deck.new([])
-# deck2 = Deck.new([])
-
-
-
+all_cards.shuffle!
+#... means up to and including  , .. means not including #look up more on ranges
+deck1 = Deck.new(all_cards[0...26])
+deck2 = Deck.new(all_cards[26..51])
 
 
+
+player1 = Player.new("Megan", deck1) 
+player2 = Player.new("Aurora", deck2)
+
+puts "Welcome to War! (or Peace) This game will be played with 52 cards.
+The players today are Megan and Aurora.
+Type 'GO' to start the game!
+------------------------------------------------------------------"""
