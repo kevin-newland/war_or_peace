@@ -17,16 +17,19 @@ class Turn
     end
   end
 
-  def winner # not sure if this is right
-    if type == :basic 
-      @player1.deck.rank_of_card_at(0) > @player2.deck.rank_of_card_at(0)
+  def winner #changed to account for all possibilities
+    if @player1.deck.rank_of_card_at(0) > @player2.deck.rank_of_card_at(0)
       @player1
-    elsif type == :war
-      @player1.deck.rank_of_card_at(2) < @player2.deck.rank_of_card_at(2)
+    elsif @player1.deck.rank_of_card_at(0) < @player2.deck.rank_of_card_at(0)
       @player2
-    elsif type == :mutually_assured_destruction
-      @player1.deck.rank_of_card_at(0) == @player2.deck.rank_of_card_at(0) && @player1.deck.rank_of_card_at(2) == @player2.deck.rank_of_card_at(2)
-      "No Winner"
+    elsif @player1.deck.rank_of_card_at(0) == @player2.deck.rank_of_card_at(0) 
+      if @player1.deck.rank_of_card_at(0) > @player2.deck.rank_of_card_at(0)
+        @player1
+      elsif @player1.deck.rank_of_card_at(2) < @player2.deck.rank_of_card_at(2)
+        @player2
+      else
+       "No Winner"
+      end
     end
   end
 
@@ -45,7 +48,8 @@ class Turn
   end
 
   def award_spoils(winner)
-    @spoils_of_war.shuffle!#needed to prevent predictability to the game by shuffling the cards before awwarding them to the winner 
+    @spoils_of_war.shuffle! #wont pass with this although I think its #needed to prevent predictability to the game by shuffling the cards before awwarding them to the winner 
     winner.deck.cards.concat(@spoils_of_war)# concat: Adds to array all elements from each Array 
+    @spoils_of_war.clear
   end
 end
